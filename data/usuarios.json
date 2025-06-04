@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ana",
+    "apellido": "González",
+    "documento": "87654321",
+    "tipo_usuario": "Estudiante",
+    "email": "ana@email.com",
+    "curso": "4to Año",
+    "talleres_inscritos": [
+      "Carpintería",
+      "Electrónica"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos",
+    "apellido": "Rodríguez",
+    "documento": "11223344",
+    "tipo_usuario": "Personal",
+    "email": "carlos@escuela.edu",
+    "rol": "Profesor de Taller",
+    "departamento": "Tecnología"
+  }
+]
