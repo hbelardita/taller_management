@@ -1,6 +1,6 @@
 # Sistema de Gestión de Taller Escolar
 
-Este proyecto es una aplicación de terminal en Python diseñada para gestionar usuarios, herramientas, mantenimientos y asignaciones/préstamos dentro de un taller escolar. 
+Este proyecto es una aplicación de terminal en Python diseñada para gestionar usuarios, herramientas, mantenimientos y asignaciones/préstamos dentro de un taller escolar.
 
 ## Características Implementadas (hasta ahora)
 
@@ -28,7 +28,7 @@ Para ejecutar este proyecto, se recomienda crear y activar un entorno virtual de
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/hbelardita/taller_management
     cd taller_management
     ```
 
