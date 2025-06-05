@@ -18,6 +18,7 @@ VALID_STATES = ["Disponible", "En Uso",
 VALID_TYPES = ["Herramienta Manual", "Máquina Eléctrica",
                "Equipo de Medición", "Consumible"]
 
+TOOL_DATA_FILE = "herramientas"
 
 def get_all_tools() -> List[Dict[str, Any]]:
     """
@@ -26,7 +27,7 @@ def get_all_tools() -> List[Dict[str, Any]]:
     Returns:
         Lista de diccionarios con información de herramientas
     """
-    return load_json_data("herramientas")
+    return load_json_data(TOOL_DATA_FILE)
 
 
 def create_tool(data: Dict) -> Tuple[bool, str, Optional[int]]:
@@ -66,7 +67,7 @@ def create_tool(data: Dict) -> Tuple[bool, str, Optional[int]]:
     # Agregar y guardar
     tools.append(new_tool)
 
-    if save_json_data("herramientas", tools):
+    if save_json_data(TOOL_DATA_FILE, tools):
         return True, f"Herramienta creada exitosamente con ID {tool_id}", tool_id
     else:
         return False, "Error al guardar herramienta", None
@@ -124,7 +125,7 @@ def update_tool(tool_id: int, data: Dict[str, Any]) -> Tuple[bool, str]:
     tools[tool_index] = current_tool
 
     # Guardar cambios
-    if save_json_data("herramientas", tools):
+    if save_json_data(TOOL_DATA_FILE, tools):
         return True, f"Herramienta {tool_id} actualizada exitosamente"
     else:
         return False, "Error al guardar los cambios"
@@ -149,7 +150,7 @@ def delete_tool(tool_id: int) -> Tuple[bool, str]:
     if len(tools) == original_count:
         return False, f"Herramienta con ID {tool_id} no encontrado"
 
-    if save_json_data("herramientas", tools):
+    if save_json_data(TOOL_DATA_FILE, tools):
         return True, f"Herramienta {tool_id} eliminado exitosamente"
     else:
         return False, "Error al guardar los cambios"
@@ -177,7 +178,7 @@ def update_tool_state(tool_id: int, new_state: str) -> Tuple[bool, str]:
         if tool['id'] == tool_id:
             tools[i]['estado'] = new_state
 
-            if save_json_data("herramientas", tools):
+            if save_json_data(TOOL_DATA_FILE, tools):
                 return True, f'Estado actualizado a: {new_state}'
             return False, 'Error al guardar los cambios'
     return False, f"Herramienta con ID {tool_id} no encontrada"

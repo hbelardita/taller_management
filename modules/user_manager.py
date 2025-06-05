@@ -7,6 +7,7 @@ from modules.data_manager import load_json_data, save_json_data
 from modules.id_generator import get_next_id
 from modules.validators import validate_user_data
 
+USER_DATA_FILE = "usuarios"
 
 def create_user(user_data: Dict[str, Any]) -> Tuple[bool, str, Optional[int]]:
     """
@@ -59,7 +60,7 @@ def create_user(user_data: Dict[str, Any]) -> Tuple[bool, str, Optional[int]]:
     users.append(new_user)
 
     # Guardar datos
-    if save_json_data("usuarios", users):
+    if save_json_data(USER_DATA_FILE, users):
         return True, f"Usuario creado exitosamente con ID {user_id}", user_id
     else:
         return False, "Error al guardar el usuario", None
@@ -101,7 +102,7 @@ def get_all_users() -> List[Dict[str, Any]]:
     Returns:
         Lista con todos los usuarios
     """
-    return load_json_data("usuarios")
+    return load_json_data(USER_DATA_FILE)
 
 
 def search_users(search_term: str = "", user_type: str = "", course: str = "", role: str = "") -> List[Dict[str, Any]]:
@@ -195,7 +196,7 @@ def update_user(user_id: int, updated_data: Dict[str, Any]) -> Tuple[bool, str]:
     users[user_index] = current_user
 
     # Guardar cambios
-    if save_json_data("usuarios", users):
+    if save_json_data(USER_DATA_FILE, users):
         return True, f"Usuario {user_id} actualizado exitosamente"
     else:
         return False, "Error al guardar los cambios"
@@ -222,7 +223,7 @@ def delete_user(user_id: int) -> Tuple[bool, str]:
         return False, f"Usuario con ID {user_id} no encontrado"
 
     # Guardar cambios
-    if save_json_data("usuarios", users):
+    if save_json_data(USER_DATA_FILE, users):
         return True, f"Usuario {user_id} eliminado exitosamente"
     else:
         return False, "Error al guardar los cambios"
